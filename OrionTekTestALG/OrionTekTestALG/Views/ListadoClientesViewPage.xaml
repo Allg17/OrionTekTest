@@ -16,6 +16,16 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <BoxView HeightRequest="5" BackgroundColor="LightPink"/>
+                <Label Text="Deslizar a la derecha Elimina " VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <BoxView HeightRequest="5" BackgroundColor="LightGreen"/>
+                <Label Text="Deslizar a la izquierda Editar " VerticalOptions="Center"/>
+            </StackLayout>
+            <Label Text="Seleccionar cliente abre lista de direcciones." VerticalOptions="Center"/>
+            
             <ListView ItemsSource="{Binding ListadoCliente}" HasUnevenRows="True" Header="Listado de Clientes">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="Models:Cliente">
@@ -23,7 +33,7 @@
                             <SwipeView>
 
                                 <SwipeView.LeftItems>
-                                    <SwipeItems>
+                                    <SwipeItems Mode="Execute">
                                         <SwipeItem Text="Delete"
                                                    BackgroundColor="LightPink"
                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:ListaClientesViewModel}}, Path=BorrarCommand}"
@@ -31,8 +41,8 @@
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
 
-                                <SwipeView.RightItems>
-                                    <SwipeItems>
+                                <SwipeView.RightItems >
+                                    <SwipeItems Mode="Execute" >
                                         <SwipeItem Text="Editar"
                                                    BackgroundColor="LightGreen"
                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:ListaClientesViewModel}}, Path=EditarCommand}"
