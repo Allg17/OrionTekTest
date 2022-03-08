@@ -123,7 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OrionTekTestALG\OrionTekTestALG.csproj">
-      <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
+      <Project>{BE63E459-7F33-4E92-983D-77ECA0BB4ADA}</Project>
       <Name>OrionTekTestALG</Name>
     </ProjectReference>
   </ItemGroup>
