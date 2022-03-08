@@ -169,7 +169,7 @@ namespace OrionTekTestALG.ViewModels
                 UserDialogsGlobal.Alert(ex.Message, "Error!", "Ok");
             }
         }
-        private void LoadData()
+        private async void LoadData()
         {
             try
             {
@@ -182,12 +182,12 @@ namespace OrionTekTestALG.ViewModels
 
                     using (var reader = new StreamReader(stream))
                     {
-                        Municipios = new ObservableCollection<Municipios>(JsonConvert.DeserializeObject<List<Municipios>>(reader.ReadToEnd()).OrderBy(x => x.minicipio).ToList());
+                        Municipios = new ObservableCollection<Municipios>(JsonConvert.DeserializeObject<List<Municipios>>(await reader.ReadToEndAsync()).OrderBy(x => x.minicipio).ToList());
                     }
 
                     using (var reader = new StreamReader(stream2))
                     {
-                        Provincias = new ObservableCollection<Provincias>(JsonConvert.DeserializeObject<List<Provincias>>(reader.ReadToEnd()).OrderBy(x => x.provincia).ToList());
+                        Provincias = new ObservableCollection<Provincias>(JsonConvert.DeserializeObject<List<Provincias>>(await reader.ReadToEndAsync()).OrderBy(x => x.provincia).ToList());
                     }
                     #endregion
                 }
