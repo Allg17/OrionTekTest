@@ -182,6 +182,25 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\ItunesArtwork@2x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon80-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon120-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon20.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon40-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon76.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon152.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon167.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon1024.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon40-2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon60.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon58-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-1.appiconset\Icon87.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h@2x.png" />
@@ -216,7 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OrionTekTestALG\OrionTekTestALG.csproj">
-      <Project>{A682884C-CB44-4A89-B752-27BB634E0ABE}</Project>
+      <Project>{BE63E459-7F33-4E92-983D-77ECA0BB4ADA}</Project>
       <Name>OrionTekTestALG</Name>
     </ProjectReference>
   </ItemGroup>
