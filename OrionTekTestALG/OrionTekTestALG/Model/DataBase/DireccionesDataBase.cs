@@ -20,11 +20,14 @@ namespace OrionTekTestALG.Model.DataBase
         {
             if (direcciones.Predeterminada)
             {
-                var res = await database.Table<Direcciones>().FirstAsync(x => x.Predeterminada);
-                if (res != null)
+                if (await database.Table<Direcciones>().Where(x => x.Predeterminada && x.ClienteID == direcciones.ClienteID).CountAsync() > 0)
                 {
-                    res.Predeterminada = false;
-                    await database.UpdateAsync(res);
+                    var res = await database.Table<Direcciones>().FirstAsync(x => x.Predeterminada && x.ClienteID == direcciones.ClienteID);
+                    if (res != null)
+                    {
+                        res.Predeterminada = false;
+                        await database.UpdateAsync(res);
+                    }
                 }
             }
             if (direcciones.ID > 0)

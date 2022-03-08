@@ -66,28 +66,74 @@
                                             <RowDefinition/>
                                         </Grid.RowDefinitions>
 
-                                        <Label Text="{Binding Alias}"   Grid.ColumnSpan="2"  TextColor="Black"/>
-
-                                        <Label Text="{Binding Direccion}" Grid.Row="1" Grid.ColumnSpan="2"
-                                               TextColor="Black"/>
-
-
-
-                                        <Label Text="{Binding Provincia}" Grid.Row="2" TextColor="Black"/>
-                                        <Label Text="{Binding Municipio}" Grid.Row="2" Grid.Column="1" TextColor="Black"/>
-
-                                        <Label Text="{Binding Referencia}" Grid.Row="3" Grid.ColumnSpan="2" TextColor="Black"/>
-
-                                        <StackLayout Grid.Row="4" Orientation="Horizontal">
-                                            <CheckBox IsChecked="{Binding Predeterminada}"/>
-                                            <Label Text="Predeterminada" TextColor="Black" VerticalOptions="Center"/>
-                                        </StackLayout>
-
-                                        <Label  Grid.Row="4"  Grid.Column="1">
+                                        <Label Text="{Binding Alias}"   Grid.ColumnSpan="2"  TextColor="Black">
                                             <Label.FormattedText>
                                                 <FormattedString>
                                                     <FormattedString.Spans>
-                                                        <Span Text="Numero De residencia: " TextColor="Black"/>
+                                                        <Span Text="Alias: " TextColor="Black" FontAttributes="Bold"/>
+                                                        <Span Text="{Binding Alias}" TextColor="Black"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label Text="{Binding Direccion}" Grid.Row="1" Grid.ColumnSpan="2"
+                                               TextColor="Black">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Direccion: " TextColor="Black" FontAttributes="Bold"/>
+                                                        <Span Text="{Binding Direccion}" TextColor="Black"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+
+
+                                        <Label  Grid.Row="2" TextColor="Black">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Provincia: " TextColor="Black" FontAttributes="Bold"/>
+                                                        <Span Text="{Binding Provincia}" TextColor="Black"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        
+                                        <Label Text="{Binding Municipio}" Grid.Row="2" Grid.Column="1" TextColor="Black">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Municipio: " TextColor="Black" FontAttributes="Bold"/>
+                                                        <Span Text="{Binding Municipio}" TextColor="Black"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label  Grid.Row="3" Grid.ColumnSpan="2" TextColor="Black">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Referencia: " TextColor="Black" FontAttributes="Bold"/>
+                                                        <Span Text="{Binding Referencia}" TextColor="Black"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <StackLayout Grid.Row="4" Orientation="Horizontal">
+                                            <CheckBox IsChecked="{Binding Predeterminada}" IsEnabled="False"/>
+                                            <Label Text="Predeterminada" TextColor="Black" VerticalOptions="Center"/>
+                                        </StackLayout>
+
+                                        <Label  Grid.Row="4"  Grid.Column="1" VerticalTextAlignment="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Numero De residencia: " TextColor="Black" FontAttributes="Bold"/>
                                                         <Span Text="{Binding NumResidencia}" TextColor="Black"/>
                                                     </FormattedString.Spans>
                                                 </FormattedString>
