@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModel="clr-namespace:OrionTekTestALG.ViewModels"
+             x:DataType="ViewModel:ListaClientesViewModel"
+             Title="{Binding Title}"
+             Visual="Material"
+             xmlns:Converter="clr-namespace:OrionTekTestALG.ViewModels.utils"
+             xmlns:Models="clr-namespace:OrionTekTestALG.Model"
+             x:Class="OrionTekTestALG.Views.ListadoClientesViewPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0"  />
+    </ContentPage.Padding>
+    <ContentPage.Resources>
+        <Converter:SexoConverter x:Key="SexoConvert"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding ListadoCliente}" HasUnevenRows="True" Header="Listado de Clientes">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="Models:Cliente">
+                        <ViewCell>
+                            <SwipeView>
+
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Delete"
+                                                   BackgroundColor="LightPink"
+                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:ListaClientesViewModel}}, Path=BorrarCommand}"
+                                                   CommandParameter="{Binding .}"/>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Editar"
+                                                   BackgroundColor="LightGreen"
+                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:ListaClientesViewModel}}, Path=EditarCommand}"
+                                                   CommandParameter="{Binding .}"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <!-- Content -->
+
+                                <SwipeView.Content>
+                                    <StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer  Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:ListaClientesViewModel}}, Path=ClienteSeleccionado}"
+                                                               CommandParameter="{Binding .}"/>
+                                        </StackLayout.GestureRecognizers>
+
+                                        <Frame HasShadow="True" Margin="5" BorderColor="Black">
+
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+
+                                                <Label HorizontalTextAlignment="Start">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span TextColor="Black">
+                                                                <Span.Text>
+                                                                    <MultiBinding StringFormat="{}{0} {1}">
+                                                                        <Binding Path="Nombre"/>
+                                                                        <Binding Path="Apellido"/>
+                                                                    </MultiBinding>
+                                                                </Span.Text>
+                                                            </Span>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <Label Text="{Binding Correo}" Grid.Column="1" TextColor="Black"/>
+
+                                                <Label Text="{Binding Telefono}" Grid.Row="1" TextColor="Black"/>
+                                                <Label Text="{Binding FechaNacimiento,StringFormat={StaticResource formatdatetime}}" Grid.Row="1" TextColor="Black" Grid.Column="1"/>
+
+                                                <Label Text="{Binding Sexo,Converter={StaticResource SexoConvert}}" Grid.Row="2" TextColor="Black"/>
+                                            </Grid>
+                                        </Frame>
+                                    </StackLayout>
+                                </SwipeView.Content>
+                            </SwipeView>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

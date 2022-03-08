@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:ViewModel="clr-namespace:OrionTekTestALG.ViewModels"
+             x:DataType="ViewModel:ListadoDireccionesViewModel"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Model="clr-namespace:OrionTekTestALG.Model"
+             Visual="Material"
+             Title="{Binding Title}"
+             x:Class="OrionTekTestALG.Views.ListadoDireccionesViewPage">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0"  />
+    </ContentPage.Padding>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Agregar Direccion" Command="{Binding AgregarNuevaDireccion}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label HorizontalTextAlignment="Start" FontSize="20">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Listado de Direcciones de: "/>
+                        <Span TextColor="Black">
+                            <Span.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="Cliente.Nombre"/>
+                                    <Binding Path="Cliente.Apellido"/>
+                                </MultiBinding>
+                            </Span.Text>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            
+            <ListView ItemsSource="{Binding ListaDirecciones}" HasUnevenRows="True" >
+             
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="Model:Direcciones">
+                        <ViewCell>
+                            <SwipeView>
+                                <SwipeView.GestureRecognizers>
+                                    <TapGestureRecognizer  Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:ListadoDireccionesViewModel}}, Path=DireccionSeleccionada}"
+                                                               CommandParameter="{Binding .}"/>
+                                </SwipeView.GestureRecognizers>
+                                <SwipeView.LeftItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Delete"
+                                                   BackgroundColor="LightPink"
+                                                   Command="{Binding Source={RelativeSource AncestorType={x:Type ViewModel:ListadoDireccionesViewModel}}, Path=BorrarCommand}"
+                                                   CommandParameter="{Binding .}"/>
+                                    </SwipeItems>
+                                </SwipeView.LeftItems>
+
+                               
+                                <!-- Content -->
+
+                                <Frame HasShadow="True" Margin="5" BorderColor="Black">
+                                 
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                            <RowDefinition/>
+                                        </Grid.RowDefinitions>
+
+                                        <Label Text="{Binding Alias}"   Grid.ColumnSpan="2"  TextColor="Black"/>
+
+                                        <Label Text="{Binding Direccion}" Grid.Row="1" Grid.ColumnSpan="2"
+                                               TextColor="Black"/>
+
+
+
+                                        <Label Text="{Binding Provincia}" Grid.Row="2" TextColor="Black"/>
+                                        <Label Text="{Binding Municipio}" Grid.Row="2" Grid.Column="1" TextColor="Black"/>
+
+                                        <Label Text="{Binding Referencia}" Grid.Row="3" Grid.ColumnSpan="2" TextColor="Black"/>
+
+                                        <StackLayout Grid.Row="4" Orientation="Horizontal">
+                                            <CheckBox IsChecked="{Binding Predeterminada}"/>
+                                            <Label Text="Predeterminada" TextColor="Black" VerticalOptions="Center"/>
+                                        </StackLayout>
+
+                                        <Label  Grid.Row="4"  Grid.Column="1">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Numero De residencia: " TextColor="Black"/>
+                                                        <Span Text="{Binding NumResidencia}" TextColor="Black"/>
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                    </Grid>
+                                </Frame>
+                            </SwipeView>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

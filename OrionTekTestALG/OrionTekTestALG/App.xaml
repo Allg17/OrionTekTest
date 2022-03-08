@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             x:Class="OrionTekTestALG.App">
+  <Application.Resources>
+        <ResourceDictionary>
+
+            <!--<Color x:Key="AppPrimaryColor">#1976D2</Color>-->
+          
+            <Color x:Key="Azul">#002f49</Color>
+            <x:String x:Key="formatdatetime">{0:M/d/yyyy}</x:String>
+
+        </ResourceDictionary>
+
+        <!-- Application resource dictionary -->
+
+  </Application.Resources>
+</prism:PrismApplication>

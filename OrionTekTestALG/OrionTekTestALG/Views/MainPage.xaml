@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+               Visual="Material"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OrionTekTestALG.Views.MainPage"
+            BackgroundImageSource="OrionTek.png"
+             xmlns:viewModel="clr-namespace:OrionTekTestALG.ViewModels"
+             x:DataType="viewModel:MainPageViewModel"
+             Title="{Binding Title}">
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0"  />
+    </ContentPage.Padding>
+    <ContentPage.Content>
+        <StackLayout TranslationY="100">
+            <Button CornerRadius="10" VerticalOptions="Center"
+                    Text="Listado Clientes"
+                    Margin="20,0,20,0"
+                    Command="{Binding ListaDClientesCommand}"
+                    BackgroundColor="{StaticResource Azul}"/>
+            <Button CornerRadius="10" VerticalOptions="Center"  
+                    Text="Registro Clientes"
+                       Margin="20,0,20,0"
+                    Command="{Binding RegistroClienteCommand}"
+                    BackgroundColor="{StaticResource Azul}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

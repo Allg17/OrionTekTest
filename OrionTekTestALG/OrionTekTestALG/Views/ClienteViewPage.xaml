@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewModel="clr-namespace:OrionTekTestALG.ViewModels"
+             x:DataType="ViewModel:ClienteViewModel"
+             Visual="Material"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="OrionTekTestALG.Views.ClienteViewPage">
+    <ContentView.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0"  />
+    </ContentView.Padding>
+    <ContentView.Content>
+        <StackLayout>
+            <Label Text="Nombre" TextColor="Black"/>
+            <Entry Placeholder="Nombre" Text="{Binding ClienteModel.Nombre}" 
+                   TextColor="Black"/>
+
+            <Label Text="Apellido" TextColor="Black"/>
+            <Entry Placeholder="Apellido" Text="{Binding ClienteModel.Apellido}" 
+                   TextColor="Black"/>
+
+            <Label Text="Correo" TextColor="Black"/>
+            <Entry Placeholder="Correo" Keyboard="Email" Text="{Binding ClienteModel.Correo}"
+                   TextColor="Black"/>
+
+            <Label Text="Telefono" TextColor="Black"/>
+            <Entry Placeholder="Telefono" Text="{Binding ClienteModel.Telefono}"
+                   Keyboard="Numeric" TextColor="Black">
+                <Entry.Behaviors>
+                    <xct:MaskedBehavior 
+                        Mask="(XXX) XXX-XXXX" 
+                        UnMaskedCharacter="X"
+                    />
+                </Entry.Behaviors>
+            </Entry>
+
+            <Label Text="Fecha Nacimiento" TextColor="Black"/>
+            <DatePicker Date="{Binding ClienteModel.FechaNacimiento}" />
+
+            <Label Text="Sexo" TextColor="Black"/>
+            <Picker ItemsSource="{Binding Sexo}"
+                   SelectedIndex="{Binding ClienteModel.Sexo,Mode=TwoWay}"
+                    ItemDisplayBinding="{Binding .}"
+                    Title="Sexo" TextColor="Black"   />
+
+
+            <Button Text="Guardar!" CornerRadius="10" BackgroundColor="{StaticResource Azul}"
+                    Command="{Binding SaveCommand}"/>
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

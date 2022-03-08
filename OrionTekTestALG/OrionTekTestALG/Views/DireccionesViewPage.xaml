@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               Visual="Material"
+             xmlns:ViewModel="clr-namespace:OrionTekTestALG.ViewModels"
+             x:DataType="ViewModel:DireccionesViewModel"
+             xmlns:Models="clr-namespace:OrionTekTestALG.Model"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="OrionTekTestALG.Views.DireccionesViewPage">
+    <ContentView.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0, 20, 0, 0"  />
+    </ContentView.Padding>
+    <ContentView.Content>
+        <ScrollView>
+            <StackLayout Margin="5,0,5,0">
+                <Label Text="Agregar una nueva dirección"
+				   TextColor="Black"
+				   HorizontalOptions="Center"
+				   FontAttributes="Bold"
+				   FontSize="30"/>
+
+               
+
+                <Label Text="Alias"
+					   TextColor="Black"
+				       FontAttributes="Bold"
+				       FontSize="20"/>
+
+                <Entry 
+						PlaceholderColor="Gray"
+						Placeholder="Alias"
+                        Text="{Binding DireccionesModel.Alias}"
+				        VerticalOptions="StartAndExpand"
+						BackgroundColor="Transparent"/>
+
+
+
+                <Label Text="Dirección"
+					   TextColor="Black"
+				       FontAttributes="Bold"
+				       FontSize="24"/>
+
+                <Entry WidthRequest="120"
+					    PlaceholderColor="Gray"
+                        Text="{Binding DireccionesModel.Direccion}"
+					    Placeholder="Nombre de la calle"
+					    VerticalOptions="StartAndExpand"
+					    BackgroundColor="Transparent"/>
+
+                <Entry WidthRequest="120"
+						Placeholder="Departamento , piso, unidad, edificio (opcional)"
+						VerticalOptions="StartAndExpand"
+                        Text="{Binding DireccionesModel.Referencia}"
+						PlaceholderColor="Gray" 
+					    BackgroundColor="Transparent"/>
+
+
+                <Label Text="Provincia"
+					   TextColor="Black"
+				       FontAttributes="Bold"
+				       FontSize="24"/>
+
+                <Picker Title="Seleccione una provincia"
+                        ItemsSource="{Binding Provincias}"
+                        ItemDisplayBinding="{Binding provincia}"
+                        SelectedItem="{Binding ProvinciaSelected}"
+			            TextColor="Black">
+                    <Picker.Behaviors>
+                        <xct:EventToCommandBehavior EventName="SelectedIndexChanged" 
+                                                    Command="{Binding ProvinciaSeleccionadaCommand}"
+                                                    />
+                    </Picker.Behaviors>
+                </Picker>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="310"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Label Text="Ciudad"
+						   HorizontalOptions="Center"
+						   TextColor="Black"
+						   FontAttributes="Bold"
+						   FontSize="24"/>
+
+                    <Picker Title="Seleccione una Ciudad"
+                            Grid.Row="1"
+                        ItemsSource="{Binding Municipios1}"
+                            SelectedItem="{Binding MunicipiosSelected}"
+                        ItemDisplayBinding="{Binding minicipio}"
+			            TextColor="Black"/>
+
+
+                    <Label Text="# Residencia"
+						   TextColor="Black"
+						   Grid.Column="1"
+						   HorizontalOptions="Center"
+						   FontAttributes="Bold"
+						   FontSize="24"/>
+
+                    <Entry WidthRequest="120"
+						   Grid.Row="1"
+						   Grid.Column="1"
+                               Text="{Binding DireccionesModel.NumResidencia}"
+						   Placeholder="# Residencia"
+							   VerticalOptions="EndAndExpand"
+								PlaceholderColor="Gray" 
+								BackgroundColor="Transparent"/>
+
+                </Grid>
+
+                <StackLayout Orientation="Horizontal">
+                    <CheckBox Color="{StaticResource Azul}" IsChecked="{Binding DireccionesModel.Predeterminada}"/>
+                    <Label Text="Marcar como dirección preferida."
+					   TextColor="Black" VerticalOptions="Center"/>
+                </StackLayout>
+
+                <Button Margin="50,0,50,0"
+						Text="Agregar o Editar dirección" 
+						TextColor="White" 
+						CornerRadius="5"
+                            Command="{Binding SaveCommand}"
+						BackgroundColor="{StaticResource Azul}"/>
+                
+                <Button Text="&lt;-- Atras"
+                         Margin="50,0,50,0"
+                        Command="{Binding AtrasCommand}" 
+                        CornerRadius="10"
+                        IsVisible="{Binding AtrasEnable}"
+                        />
+            </StackLayout>
+
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>
